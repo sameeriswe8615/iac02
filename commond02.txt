@@ -1,0 +1,136 @@
+  Id CommandLine                                                                                                         
+  -- -----------                                                                                                         
+   1 Get-Command -Verb                                                                                                   
+   2 Get-Command -Verb provider                                                                                          
+   3 Get-Command Get-PSProvider                                                                                          
+   4 Get-Command Get-PSProvider                                                                                          
+   5 Get-Help Get-PSProvider                                                                                             
+   6 Get-Help *Provider*                                                                                                 
+   7 Get-PSProvider                                                                                                      
+   8 Get-ChildItem C:\Windows                                                                                            
+   9 Get-ChildItem C:\                                                                                                   
+  10 Get-ChildItem                                                                                                       
+  11 Get-ChildItem hklm:\                                                                                                
+  12 Get-ChildItem hklm:\                                                                                                
+  13 Get-ChildItem HKLM:\SYSTEM                                                                                          
+  14 New-Item c:\sameer                                                                                                  
+  15 New-Item c:\sameer                                                                                                  
+  16 New-Item -ItemType dir c:\sameer                                                                                    
+  17 New-Item -ItemType file c:\sameer                                                                                   
+  18 New-Item -ItemType dir c:\sameer                                                                                    
+  19 New-Item C:\sameer\test1.txt                                                                                        
+  20 New-Item -ItemType file C:\sameer\test1.txt                                                                         
+  21 Set-Item C:\sameer\test1.txt                                                                                        
+  22 Set-Item C:\sameer\test1.txt -OutVariable                                                                           
+  23 Set-Content C:\sameer\test1.txt                                                                                     
+  24 Get-Help Set-Content                                                                                                
+  25 Set-Content C:\sameer\test1.txt -Value its my file                                                                  
+  26 Set-Content C:\sameer\test1.txt -Value "its my file"                                                                
+  27 Set-Content C:\sameer\test1.txt -Value "its my file" -OutVariable                                                   
+  28 Set-Content C:\sameer\test1.txt -Value "its my file"                                                                
+  29 Get-Content C:\sameer\test1.txt                                                                                     
+  30 Set-Content C:\sameer\test1.txt -Value "this my 2nd content" | Out-File -Append                                     
+  31 Set-Content C:\sameer\test1.txt "this my 2nd content" | Out-File -Append                                            
+  32 "this my 2nd content" | Out-File C:\sameer\test1.txt -Append                                                        
+  33 Get-Content C:\sameer\test1.txt                                                                                     
+  34 "this my 2nd content" | Out-File C:\sameer\test1.txt                                                                
+  35 Get-Content C:\sameer\test1.txt                                                                                     
+  36 Get-Help Get-Content -Examples                                                                                      
+  37 "hello" | Out-File C:\sameer\test1.txt -Append                                                                      
+  38 Get-Content C:\sameer\test1.txt                                                                                     
+  39 Get-Content C:\sameer\test1.txt -TotalCount                                                                         
+  40 Get-Content C:\sameer\test1.txt -TotalCount 2                                                                       
+  41 Get-ChildItem env:\                                                                                                 
+  42 New-Item -ItemType dir env:\sam1                                                                                    
+  43 New-Item -ItemType dir env:\sam1 -vale                                                                              
+  44 New-Item -ItemType dir env:\sam1 -Value "Hello"                                                                     
+  45 Get-ChildItem env:\                                                                                                 
+  46 get-help *Path*                                                                                                     
+  47 get-help *Path* -Examples                                                                                           
+  48 Get-Item Env:\Path | Out-File d:\backup                                                                             
+  49 Get-PSProvider                                                                                                      
+  50 Get-Help *eventlog*                                                                                                 
+  51 Get-Help Write-EventLog -Examples                                                                                   
+  52 Write-EventLog -LogName SamApp -Source myapp -EventId 5555 -EntryType Information -Message "SamAPP" -Category 1 -...
+  53 Write-EventLog -LogName SamApp -Source Samapp -EventId 5555 -EntryType Information -Message "SamAPP" -Category 1 ...
+  54 Write-EventLog -LogName Application -Source Apps  -EventId 5973 -EntryType Information -Message "its new eventid"...
+  55 Write-EventLog -LogName Application -Source "Software Protection Platform Service" -Message "Test Message"          
+  56 Get-EventLog -LogName Application -Newest 5                                                                         
+  57 $myvar=23                                                                                                           
+  58 $myvar                                                                                                              
+  59 $myvar.GetType()                                                                                                    
+  60 $myvar1=56                                                                                                          
+  61 $myvar1.GetType()                                                                                                   
+  62 $myvar1                                                                                                             
+  63 $myvar+$myvar1                                                                                                      
+  64 [int]::MinValue                                                                                                     
+  65 [int]::MaxValue                                                                                                     
+  66 [int64]::MaxValue                                                                                                   
+  67 [int64]::MinValue                                                                                                   
+  68 [uint]::MinValue                                                                                                    
+  69 [uint32]::MinValue                                                                                                  
+  70 [uint32]::MaxValue                                                                                                  
+  71 [int64]::MinValue                                                                                                   
+  72 Get-Help *Object*                                                                                                   
+  73 Get-Help New-Object -Examples                                                                                       
+  74 $myvar="This is my object"...                                                                                       
+  75 $myvar                                                                                                              
+  76 Get-TypeData                                                                                                        
+  77 Get-Help New-Object -Examples                                                                                       
+  78 $myvar                                                                                                              
+  79 $myvar | Get-Member                                                                                                 
+  80 $myvar.ToUpper()                                                                                                    
+  81 $myvar.ToSingle()                                                                                                   
+  82 $myvar.Length                                                                                                       
+  83 Get-Service | Get-Member                                                                                            
+  84 Get-Process | Get-Member                                                                                            
+  85 [System.Diagnostics.Process]::GetProcesses()                                                                        
+  86 Get-Service | Get-Member                                                                                            
+  87 Get-ChildItem | Get-Member                                                                                          
+  88 $strmyvar="Thi is my object"                                                                                        
+  89 $strmyvar                                                                                                           
+  90 Get-Help *System*                                                                                                   
+  91 $strmyvar -ilike th                                                                                                 
+  92 $strmyvar -ilike thi                                                                                                
+  93 $strmyvar | Get-Member                                                                                              
+  94 $strmyvar.ToSingle()                                                                                                
+  95 $strmyvar.TrimStart()                                                                                               
+  96 $strmyvar.TrimStart(3)                                                                                              
+  97 $strmyvar.ToString()                                                                                                
+  98 $strmyvar.ToString(3)                                                                                               
+  99 $strmyvar.ToString(4)                                                                                               
+ 100 $strmyvar.ToString(3)                                                                                               
+ 101 $strmyvar.Substring()                                                                                               
+ 102 $strmyvar.Substring(3)                                                                                              
+ 103 $strmyvar | Get-Member                                                                                              
+ 104 $strmyvar.Substring(0)                                                                                              
+ 105 $strmyvar.Substring(5)                                                                                              
+ 106 $strmyvar.Substring(-5)                                                                                             
+ 107 $strmyvar.Substring(0,4)                                                                                            
+ 108 $strmyvar.Substring(0,3)                                                                                            
+ 109 $strmyvar.TrimStart(my)                                                                                             
+ 110 $strmyvar.StartsWith(my)                                                                                            
+ 111 $strmyvar.StartsWith(My)                                                                                            
+ 112 $strmyvar.StartsWith( my )                                                                                          
+ 113 $strmyvar.Contains(my)                                                                                              
+ 114 $strmyvar.Contains(My)                                                                                              
+ 115 $strmyvar.Contains(my)                                                                                              
+ 116 $strmyvar.Contains("my")                                                                                            
+ 117 Get-Variable                                                                                                        
+ 118 Get-Variable get-date                                                                                               
+ 119 Get-Variable | Get-Member                                                                                           
+ 120 $mydate=get-date                                                                                                    
+ 121 $mydate | Get-Member                                                                                                
+ 122 $mydate.TimeOfDay                                                                                                   
+ 123 Get-Help Get-Date -Examples                                                                                         
+ 124 New-Item C:\sameer\service-yy-mm-dd-m.txt                                                                           
+ 125 Get-Service                                                                                                         
+ 126 get-service | Get-Member                                                                                            
+ 127 get-help Get-Service -Examples                                                                                      
+ 128 Get-Service | Get-Member                                                                                            
+ 129 Get-FormatData | Get-Member                                                                                         
+ 130 Get-Date                                                                                                            
+ 131 Get-Help Get-Date -Examples                                                                                         
+ 132 Get-Service | Get-Member                                                                                            
+ 133 Get-Help Get-Date -Examples                                                                                         
+ 134 Get-Help                                                                                                            
