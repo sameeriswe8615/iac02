@@ -1,0 +1,35 @@
+open command promt 
+
+cd ..\..\users\abc\desktop
+csvde -i -f "File name"
+Veriable {$_.
+
+Bulk password change 
+
+#Make sure the Active Directory module is loaded
+Import-Module ActiveDirectory
+
+#Import our CSV with usernames and passwords
+#Change the file location to wherever your CSV is saved
+$passwordList = Import-Csv "C:\userPasswordList.csv"
+
+#Running this loop for each row in the CSV file
+foreach ($user in $paswordList)
+{
+  #Set the samAccountName and Password as variables
+  $username = $user.samAccountName
+  $password = $user.Password
+  
+  #Convert the password from plain text to a secure string
+  $securePassword = ConvertTo-SecureString -String $password -AsPlainText -Force
+  
+  #Set the secure string password to the user
+  Set-ADAccountPassword -Identity $username -NewPassword $securePassword -Reset
+  
+  #Require the user to change their password on next logon
+  #You can comment out this line if changing the password isn't required
+  Set-ADUser -Identity $username -ChangePasswordAtLogon $true
+  
+  #Let you know the script ran for this user
+  Write-Host " Password has been set for: "$username
+  }

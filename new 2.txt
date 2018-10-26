@@ -1,0 +1,303 @@
+Get Active Directory information using Powershell cmdlet
+1) first imort module in powershell
+  a) get-module
+  b) import-module active directory 
+2) enter in AD using below command in powershell
+   a) cd ad:
+   b) cd ( enter Tab to selct ou )
+   c) for example cd '.\dc=sri ,dc=com"
+   d) AD:dc=sri ,dc=com> dir you will get list of container in the AD
+   e) just enter and write cd ( use tab key to select OU ) and enter then type dir 
+ 3) get-addomain ( for get all the information about Active directory )
+4) set password & enable account 
+   a) $pw = Read Host " what is the password?" -assecurestring set-adaccountpassword ron -newpassword $pw enable -Adaccount ron
+   b) new-aduser Jim -enable $true -accountpassword $(convertto-securstring "Password@123" -asplanintext -force)
+   
+ 
+ 5) Template to create AD user account 
+   a) $user = Get-ADUser -Identity jgreen -Properties memberof, office
+New-ADUser -Name "GREEN Bill" -SamAccountName bgreen
+➥ -UserPrincipalName "bgreen@manticore.org"
+➥ -AccountPassword $secpass -Path "cn=Users,dc=Manticore,dc=org"
+
+6) Create AD user Account in two way 
+  A) $secpass = Read host -assecurestring "Password"
+     New-ADUser -name "cool pad" -givenname Cool -surname Pad -samaccount cpad -userpricnplename cpad@sri.com -accountpassword $secpass -path "OU=users,OU=Mumbai,OU=Site,dc=sri,dc=com" -enabled:$true
+                
+  B) new-aduser -name "Cool Pad" -givenname Cool -surname pad -samaccount CPad -userpricnplename CPad@sri.com -path "ou=users,ou=Mumbai,OU=site,cn=sri,cn=com" -accountpassword (Read-host -assecurestring "passwor") -passthru | Enable-Adaccount
+
+7) How to check user propertiy 
+
+  A) get-aduser -filter 'samaccountname -eq "cpad"'	
+     get-aduser -filter 'samaccountname -eq "CPad"' -propertiy *
+                
+8) Bulk changes for common title 
+
+   A) get-aduser -filter { title -like               'Devloper*' } | set-aduser -title 'coder' -passthrue
+   title = name of attruiute which we need to change and infornt of title new name we need to add for attruiut
+   
+ 9) Using below command we can search in particular OU
+    
+                A) Get-ADUser -filter * -searchbase "ou=powershell,dc=contoso,dc=com" -pr SamAccountName,PasswordExpired,whenChanged,UserPrincipalName
+                B) Also export data to CSV 
+                   get-aduser -filter* -searchbase "ou=powershell,dc=contoso,dc=com" -pr SamAccountName,PasswordExpired,whenChanged,UserPrincipalName | export-csv c:\test1.csv
+                   
+10) Export Report from particular OU
+
+     A) Get-ADUser -Filter * -SearchBase "OU=RSPs,OU=External,OU=Sites,DC=b2xcare,DC=intern" -Properties Name,SamaccountName,PasswordExpired,lastLogonTimestamp,Manager,City,Description,title | Export-Csv 'z:\AD Users Data\External\RSPs\RSPs.csv'
+                
+11) Changes in particular OU 
+
+    A) get-aduser -filter * SearchBase "OU=RSPs,OU=External,OU=Sites,DC=b2xcare,DC=intern" | set-aduser -title "coder" 
+
+12) Password related permision we can give like this 
+  
+    A) get-aduser -filter * -searchbase "OU=RSPs,OU=External,OU=Sites,DC=b2xcare,DC=intern" | set-aduser -PasswordNeverExpire:$true -cannotchangepassword:$true
+                
+13)Create OU using Poweshell
+    
+                A) New-ADOrgnizationUnit -name Cool -Path "Ou=site,DC=Sri,dc=com"
+
+14) Create scurity group 
+
+   A) New-ADGroup -Name PStest -Path "CN=Users,DC=Manticore,DC=org" `
+-GroupCategory Security -GroupScope Global `
+-Description "Test group for AD Lunches"
+
+15) how to add user in AD group
+
+   A) Add-adgroup -identity Data_HR -member (Get-ADUser "ravibhalal")
+   
+16) Otherattributes command 
+
+17) #Set permission for user 
+
+   A) Set-adaccountcontrol ronnie -passwordneverexpire $true
+      set-adaccountcontrol ronnie -passwordneverexpire $false
+                  
+18) how to get information about ADGroups member and memberoff
+
+   A) get-adgroup Legal -propertiy member memberof
+   
+
+
+13) Short cut command line
+
+   A) get-alias 
+   b) get-alias -defination "Get-services" you will get all the information
+   
+19) Disable AD User based on specific attribute using Powershell
+    Disable-ADAccount -Identity <adaccount>
+
+    Disbale AD account using search base
+   Get-ADUser -Filter 'employeeID -like "1200547"' | Disable-ADAccount
+   Get-ADUser -LDAPFilter '(employeeID=1200547)'  | Disable-ADAccount
+   
+20) Remove Number of users from Particular OU
+
+    A) Get-ADUser -SearchBase 'OU=Oracle,OU=IT-Vendors,OU=External,OU=Sites,DC=b2xcare,DC=intern' -Filter * | ForEach-Object {Remove-ADGroupMember -Identity 'PRJ-ERP-External' -Members $_ }
+     
+                B) Remove Number of users from Particular OU
+
+Get-ADUser -SearchBase 'OU=Oracle,OU=IT-Vendors,OU=External,OU=Sites,DC=b2xcare,DC=intern' -Filter * | ForEach-Object {-ADGroupMember -Identity 'PRJ-ERP-External' -Members $_ } 
+    
+ 21) Memberof details of particular Ou
+    
+                A) Get-ADUser -Identity "FCuadrado" -Properties memberof
+                
+22) Member of details of particular Ou
+
+Get-ADUser -Filter * -Properties memberOf | `
+Where-Object {
+    $_.memberof.contains('CN=foo,OU=allsites,DC=example,DC=org') -and `
+    $_.memberof.contains('CN=bar,OU=allsites,DC=example,DC=org' ) 
+} 
+
+23) new users created in last 30 days 
+
+$When = ((Get-Date).AddDays(-30)).Date
+Get-ADUser -Filter {whenCreated -ge $When} -Properties whenCreated
+
+24) Bulk changes in AD 
+
+  1) First you need to export report from AD
+  2) 2nd you need to import report in Powershell
+  
+    $user = Import-csv -path c:\user\administrator\desktop\test.csv  
+  3) Run replacement command
+ 
+   ForEach ($user in $users) {get-aduser -filter "SamAccountName -eq '$($user.samaccount)'" -propertiy * -searchbase "OU=user,ou=green,ou=site,dc=sri,dc-com" | set-aduser -city $($user.city) -office $($user.Office) -division $($user.Division)
+   
+Another way - very Important is D 
+   $csv=import-csv .\usersout1.csv  
+foreach ($csv1 in $csv)   
+{  
+ 
+$l=$csv1.l 
+$st=$csv1.st 
+$title=$csv1.title 
+$department=$csv1.department 
+$company=$csv1.company 
+$mobile=$csv1.mobile 
+$postalcode=$csv1.postalcode 
+$homephone=$csv1.homephone 
+$initials=$csv1.initials 
+$csv1.samaccountname 
+ 
+if($csv1.l) 
+{ 
+$l 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ l='$csv1.l'} -Replace @{ l=$l} 
+} 
+if($csv1.st) 
+{ 
+$st 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ st='$csv1.st'} -Replace @{ st=$st} 
+} 
+if($csv1.title) 
+{ 
+$title 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ title='$csv1.title'} -Replace @{ title=$title} 
+} 
+ 
+if($csv1.department) 
+{ 
+$department 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ department='$csv1.department'} -Replace @{ department=$department} 
+} 
+ 
+if($csv1.company) 
+{ 
+$company 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ company='$csv1.company'} -Replace @{ company=$company} 
+} 
+if($csv1.mobile) 
+{ 
+$mobile 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ mobile='$csv1.mobile'} -Replace @{ mobile=$mobile} 
+} 
+if($csv1.postalcode) 
+{ 
+$postalcode 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ postalcode='$csv1.postalcode'} -Replace @{ postalcode=$postalcode} 
+} 
+if($csv1.homephone) 
+{ 
+$homephone 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ homephone='$csv1.homephone'} -Replace @{ homephone=$homephone} 
+
+
+
+
+
+} 
+if($csv1.initials) 
+{ 
+$initials 
+Set-ADUser -Identity $csv1.samaccountname -Remove @{ initials='$csv1.initials'} -Replace @{ initials=$initials} 
+} 
+
+
+
+25) Sync office 365 and On primises AD using below command
+  
+   Start-ADSyncSyncCycle –PolicyType Delta
+   
+ 26) Get-help
+     get-help get-*
+                get-help get-Adaccountpassword 
+                 get-help set-adaccountpassword -example"
+                
+                 
+                 get-pssnapin
+                get-help get-service -online
+                get-help -get-service -showwindow..
+                
+27)  Type a longer command line using all New-ADUser properties + the ConvertTo-SecureString commandlet
+
+[PS] C:\users\Administrator.DOMAINA\Desktop>import-csv .\BulkAddADUsers.csv | % {New-ADUser -GivenName $_.GivenName -Surname $_.Surname -Name $_.Name -SamAccountName $_.SamAccountName -Description $_.Description -Department $_.Department -EmployeeID $_.EmployeeID -Path $_.Path -Enabled $True -AccountPassword (ConvertTo-SecureString $_.Password -AsPlainText -force) -PasswordNeverExpires $True}
+                
+                 
+28) Add Email ID in proxyAddress ( For single User)
+
+   Set-ADUser subsun -Add @{ProxyAddresses="SMTP:subsun@domain.com"}
+   
+   
+ 29) Add email Address for mulitple users ( in proxyaddress )
+
+ Import-Module Activedirectory
+Import-csv C:\input.csv | % {
+Set-ADUser $_.sAMAccountName -Add @{ProxyAddresses="SMTP:$($_.Email)"}
+
+30) To get the inventory of all the computer in domain use below command
+
+   get-adcomputer -filter * | get-wmiobject -class win32_bios
+   
+31)  Enable remoting on server use below command
+
+   enable - psremoting 
+  
+32) To take the remote connection of any mechine use below commond  
+   
+   Invoke-command -computername DC {restart-computer}
+   invoke-command -computername ITC0112 {get-eventlog -logname system -new 4} 
+   invoke-command -computername DC {get-service -name bit*}
+   Enter-psssasion dc1 -  This commond is use to enter in server c drive 
+
+
+33) to know which service is install on server use below command
+
+   Get-winodowsfeature   
+   get-windowsfeature *Windowspowershell*
+   instal-windowsfeature -name windowspwoershellwebaccess
+
+   
+   
+34) To know which way we use to view our imort csv
+
+  import-csv c:\user\desktop\test | out-gridveiw
+  
+35) To get the AD user details with properties or office name 
+
+  get-aduser -filter 'office -eq "head office"' -properties SamAccountName
+  
+36) To create group under domain default location set in this way
+
+   $root = (Get-ADDomain) Distungueshedname
+
+37) Add or remove value in user properties use following method 
+
+  @(Add   
+  
+  C:\Windows\system32> Get-Service | Where-Object {$_.status -eq stopped}
+  
+  Get-ADUser | Where-Object {$_.whenchanged -gt "05/07/2017"}
+38) User Template
+
+   $secpass = Read-Host "Password" -AsSecureString
+   $user = Get-ADUser -Identity Fcsr -Properties memberOf
+   New-ADUser -Name "FirstLevel2 CSR" -SamAccountName 'Fcsr2' `
+ -UserPrincipalName "Fscr2@foo.com" -AccountPassword $secpass -Path "OU=Users,OU=Contractors,DC=MY,DC=foo,DC=com" `
+ -Enabled:$true -Instance $user
+ 
+39) #searchbase ( Popular search location 
+
+Get-ADUser | Select-Object -expandproperty namingcontexts
+
+Get-ADDomain
+Get-ADForest
+
+  #user container base search
+  
+  get-aduser -filter * -searchbase (get-addomin).userscontainer | format-wide Name -autosize
+  
+  # computer base search
+  
+    get-aduser -filter * -searchbase (get-addomain).computercontainer | format-wide name -autosize
+	
+  #Credentials 
+  
+   get-adforest -servername mumdata.b2xcare.intern -credentials (get-credentials B2xcare\Admin_SI)
+
+  
+

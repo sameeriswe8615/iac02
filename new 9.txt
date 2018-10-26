@@ -1,0 +1,33 @@
+1) Company Branding in office 365.
+2) More Update on office 365 Aleart
+3) Upgrade Office 2013 to 2016 
+4) password change option for external user 
+
+
+AWS on Powershell 
+
+1) To set AWS Credentials 
+  - Set-AWSCredentials -AccessKey AKIAIOSFODNN7EXAMPLE -SecretKey wJalrXUtn
+FEMI/K7MDENG/bPxRfiCYEXAMPLEKEY -StoreAs MyProfileName
+
+2) To get details of all save credentials 
+
+  - Get-AWSCredentials -ListProfileDetail
+  
+ProfileName                StoreTypeName         ProfileLocation
+-----------                -------------         ---------------
+C:\Users\SIswe\Desktop\key NetSDKCredentialsFile
+
+3) to know which is default region 
+ - Get-DefaultAWSRegion
+
+4) list of availbale Region 
+ 
+  -  Get-AWSRegion
+5) Cmdlet Discovery below commonds are user
+
+-  Get-Command -Module AWSPowerShell |
+
+select particuler string 
+
+ -  Get-Command -Module AWSPowerShell | Select-String region

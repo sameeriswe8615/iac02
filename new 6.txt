@@ -1,0 +1,15 @@
+To run powershell on remote machin
+$Pssession=new-pssession -computername ITC0162 
+
+using Get-pssession we got to know which computer remote session we took
+
+how to take the remote connection of other server or computer
+
+$server= "DC1","Dc2"
+$server
+DC1
+Dc2
+$server | foreach {start iexplorer http://$_} 
+
+Ashley McGlone, Adam Bertram Powershell 5.0 
+

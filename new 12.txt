@@ -1,0 +1,41 @@
+#sync c
+
+ aws s3 sync s3://iswetest /home/
+ 
+ aws s3 cp s3://iswetest/iswe.pem /home/
+ 
+ #sudo su 
+ 
+ # chmod 400 iswe.pem ( 600 read write,700 read write excute )
+ 
+ # take the console from another putty session 
+  
+   ssh -i /home/iswe.pem ec2-user@18.232.175.222
+   
+ # Apache File editor 	
+ 
+   vi httpd.conf
+
+# to check service IP table status 
+ 
+    service iptables status
+
+# to check httpd conf file
+
+   cd /etc/httpd/conf.d
+#   
+ configuration location 
+ 
+ /home/ec2-user/aws-scripts-mon/awscreds.conf
+ 
+ Perl module for apache 
+ yum install Mod_Perl
+
+yum install php php-mysql
+
+
+yum list | grep -i module
+
+to check syntex commodn 
+ 
+ 

@@ -1,0 +1,506 @@
+# Apache configuration file 
+
+   /etc/httpd/conf/httpd.conf
+
+ls : List down ( What are the different directory and files are there ll) 
+CD file name : move down to that directory 
+/ : root directory ( everythin can be access to this directory) 
+clear : cli is clear ( its not deleted they just scroll down ) - its nothing but hidden 
+CD .. : back commond (.. : Period mark) 
+Echo 
+Echo hi 
+Su : switch to root user 
+Su username : used to swithc differnt user ( Su Sameer )
+Sudo ls : is used to excute commond as root account 
+ 
+ # LS commond
+ 
+ ls 
+ ls -l
+ ls -a ( You get all hiddedn folder and file )
+ ls -author : ( author name you will get )
+ combination of two commonf 
+ ls -la ( you get hidden file)
+ ls -las ( You will get size of folder file ) 
+ ls -las > file.txt
+ 
+ # CD Directory 
+ 
+ CD / : ( It present root )
+ 
+ 
+ #Cat , sort ,grap commond
+ 
+ cat : when you working with file ( txt, )
+ 
+ ( > ) : Called direction 
+ cat file1.txt >> file2.txt : ( Use this for merge content from file 1 to file 2) 
+ Flag
+ cat -b ( This is used to add line number ) 
+ cat -n ( to add line numbers to all lines
+ cat -s (
+ cat -e  ( 
+ 
+ TO edit txt file use below commond
+ 
+ cat >> File2.txt ( add some contecnt and for saving use ctrl+D )
+ 
+ Cat > file2.txt
+ 
+ # Grep commond
+ 
+ Search particular word in txt or file ( this simplier to ctrl+F )
+ 
+ Grep mo Automobile.txt
+ grep -n mo Automobile.txt ( show result in numerical order )
+ grep -c mo automobile.txt
+ grep -iv mo automobile.txt
+ 
+ # Sort commond ( File, files contents and directries can be sorted ) 
+ 
+sort file1.txt
+sort file1.txt file2.txt
+sort -r file1.txt ( shw result in revers order )
+sort -n file2.txt ( Show result in numerical order)
+
+# Working with | commond
+grep dh file1.txt file2.txt | sort 
+grep dh file1.txt file2.txt | sort -r 
+
+# CP ( COPY file and directries ) 
+
+cp 
+cp -i ( Over right file )
+cp - n ( Doesnt overright file )
+cp - u  ( Update the destination file only when source file is differnet from destination file)
+cp -r ( Recursive copy for 
+cp -v
+
+cp modi.txt /home/Sameer/Desktop/
+
+
+# Move commond MV
+
+MV -i ( enter in interactive mode )
+MV -u 
+mv - v 
+
+mv sanjeev /home/Sameer/Desktop
+
+# multiple file move 
+
+cp *.txt /home/Sameer/Desktop
+mv *.txt /home/Sameer/Desktop
+
+# Make Directory commond
+
+Mkdir 
+mkdir - p : creates both new parent directory and syb directory
+mkdir  --presets
+
+#rm & rmdir working with file & Directory
+
+# working with user permission r,w &x
+R : read
+w : write 
+x: exute 
+
+chmod : to change the access permission of giles and directries ( chmod g=rx,o=r Pictures/ ) 
+chown : to change the owner of file and directory 
+chgrp "  to change the owner 
+
+# working with linux repositories 
+
+  yum install package-name (For RHEL Based systems )
+ sudo yum install java-1.8.0-openjdk 
+    Intractive mode
+ sudo yum -y install java-1.8.0-openjdk ( entering -y mean it will not promt for installation yes or no -  mean in intractive mode )
+ 
+# set envorment verible 
+
+ source.bashrc
+ 
+# working with Tar files.
+
+gzip : use to comperss
+gunzip : to decompress.gz file
+tar : to compress and decompress file with .tar format 
+
+tar file will be present 
+tar -cvf tar-file-name file-name ?? comperss file 
+tar -xvf 
+
+Example 
+
+tar -cvf sam.tar sam.txt/
+
+tar -xvf sam.tar
+
+# Envionment Variables Control.
+
+  Envionment variables control the behaviour of the software packages installed in linux - the path where the packages have been installed will be specified in enviroment variables.
+  
+ - printenv :  you will get all variables
+ - 
+
+# Top commond work.
+ 
+  TOP commond process 
+
+   ps ux ( commond shows how many process are run by you ) 
+   pidof firefox ( here you can see PID number of process which is running ) 
+   kill 2966 ( here the 2966 is PID number of firefox which is running using this commond you can kill firefox )
+ 
+# Creating user 
+
+sudo useradd username
+sudo passwd username
+sudo userdel username 
+
+# creating group in 
+sudo groupadd test
+sudo groupdel test
+
+# SSH ( Secure shell gaiiing access to remote machine ) - respective networking 
+
+ ifconfig
+sudo ip addr add 192.168.56.1010 dev eth1
+sudo iP del add 192.168.56.10 dev eth0
+
+
+
+
+
+
+
+# Reguler expression 
+
+To search pattern of data.
+
+. : Replace any character  
+ ^ : matches the start of the string  (^a ) ex : $cat file1.txt | grep ^a
+ $ : Matches the end of the string ex:  ex : ls | gre'[xt$]'
+ ' : matches the preceding character zero or more times
+ ? :  matches the preceding characterone or more times
+ () : group regular expression
+ \ : Represnts special character
+ 
+ 
+
+ 
+ # to create folder 
+ Mkdir :to create folder 
+ 
+ touch :  to create file 
+ 
+
+# To assigen user root permission
+ 
+ chage Sameer ( enter user name ) 
+
+ # To see the groups 
+ 
+ cat /etc/group | less
+ 
+ #Read, write , xecutes 
+ 4,2,1
+ # user, group , others
+ 
+ user group other user 
+ 
+ # To extract file use this commond
+ 
+   - unzip VSCode-linux-x64.zip -d /opt/ ( Opt - is location ) 
+ 
+ 
+ # bash scripting ( Visual studio code ) 
+ 
+   #!/bin/bash ( Always use to create bash file ) 
+   
+ # cat /etc/shells ( Get to know how many shells are there ) 
+  
+  - sh ( bon shell )
+  -bash ( Bon against shell ) 
+  - dash 
+  - rbash 
+  
+  # Bash location 
+# comments ( Lines of code - we write comments using # )
+# Variable ( store some kind of data like string data, number ) ( unix system two type veriable 1) system veriable - its manintanin by linux & unix OS - its define in capital cases 2) users define verabile - maintain by user - define in lower case )
+
+  1) System Veriable 
+     echo $Bash 
+  
+   - which bash 
+# Run the following code to create a soft link.
+
+  ln -s /opt/VSCode-linux-x64/Code /usr/local/bin/code
+  
+#To create the desktop launcher
+
+Copy the icon file to /usr/share directory in order to create the desktop Launcher.
+
+ - cp /opt/VSCode-linux-x64/resources/app/vso.png /usr/share/icons/
+ 
+ # Different type of shell
+   cat /etc/shalls
+   
+ # user gedit, vim , nano is editior for shall scripting 
+ 
+ # using verabile & comments
+ 
+ ##how to read input 
+ # when you want to take out put from terminal use read commond
+ 
+ echo "Enter name : "
+ read name1 name 2
+ echo "enterd name : $name1 , $name2"
+ 
+ read -p 'username : ' user_var
+ echo	"username : $user_var"
+ 
+ read -p 'username : ' user_var
+ read -sp 'password : ' password_var
+ echo	"username : $user_var"
+ 
+ echo "enter name : "
+ read -a names 
+ echo "name : ${name[0]} , ${names[1]}"
+
+Built in variables 
+ echo "enter name : "
+ read
+ echo "name : $REPLY"
+
+ ## Pass arguments with Bash-Script
+  arguments stored in $1, 2, 3 variables
+  echo $1 $2 $3 ' > echo $1 $2 $3'
+  
+  run - ./hell.sh mark tom jhon 
+ 
+ #pass arguments using array $@ - pass your arguments in array 
+ 
+ echo $1 $2 $3 ' > echo $1 $2 $3'
+ 
+ args = ("$@")
+ 
+ echo ${args[0]} ${args[1]} ${args[2]}
+ 
+ echo $@
+ 
+ $# - to know number of arguments 
+ 
+## If statements - evaulate some condition ( if then , if then else, if elif else
+
+if [condition]
+then 
+statment 
+fi 
+
+compersion ioerator - iteger comprison ( angale backet ) 
+string comprison (= , ==, -z , >, < ) 
+
+In shell:
+
+0 value indicates false.
+1 or non-zero value indicate true.
+
+- Example
+ 1) 5 > 12 - 	echo $(( 5 > 12 )) output = 0 - 	Is 5 greater than 12?
+ 2) 5 == 10 - echo $(( 5 == 10 )) output = 0 -   - 	Is 5 equal to 10?
+ 3)5 != 2 - echo $(( 5 != 2 )) - output = 1 - 5 is not equal to 2?
+ 
+ ##Numeric Comparisons
+  
+num1 -eq num2                  check if 1st  number is equal to 2nd number
+num1 -ge num2                  checks if 1st  number  is greater than or equal to 2nd number
+num1 -gt num2                  checks if 1st  number is greater than 2nd number
+num1 -le num2                   checks if 1st number is less than or equal to 2nd number
+num1 -lt num2                   checks if 1st  number  is less than 2nd number
+num1 -ne num2                  checks if 1st  number  is not equal to 2nd number
+ 
+## Strings Comparisons
+
+ var1 = var2     checks if var1 is the same as string var2
+var1 != var2    checks if var1 is not the same as var2
+var1 < var2     checks if var1 is less than var2
+var1 > var2     checks if var1 is greater than var2
+-n var1             checks if var1 has a length greater than zero
+-z var1             checks if var1 has a length of zero
+ -- Here we only used ‘-n’ parameter but we can also use “-z“. The only difference is that with ‘-z’, it searches for string with zero length while “-n” parameter searches for value that is greater than zero.
+
+##  File comparison
+
+ -d file                        checks if the file exists and is it’s a directory
+-e file                        checks if the file exists on system
+-w file                       checks if the file exists on system and if it is writable
+-r file                        checks if the file exists on system and it is readable
+-s file                        checks if the file exists on system and it is not empty
+-f file                         checks if the file exists on system and it is a file
+-O file                       checks if the file exists on system and if it’s is owned by the current user
+-G file                        checks if the file exists and the default group is the same as the current user
+-x file                         checks if the file exists on system and is executable
+file A -nt file B         checks if file A is newer than file B
+file A -ot file B          checks if file A is older than file B
+
+## Command Line Arguments in Linux Shell Scripting
+
+- $0 - represents the comm ir script
+- $1 to $9 - represents arguments 1 through 9
+-  ${10} and so on - represents arguments 10 and further
+- $# - Represnts total number of arguments
+-  $* -  Represnts all arguments
+- $$ - Represnts the PID of running script
+
+## If statements
+
+-  when using angel bracket use double (()) [[]] squre bracket 
+
+## File test operator 
+
+-  file exist or not, regular file, charchter special file for use file test operator sing condition 
+
+echo -e "Enter the name of the file :  \c" ( -e use to enable enterprision for \ slash ) (-e flag use to file exist or not )
+read file_name
+
+if [ -e $file_name ]
+then 
+echo "$file_name found"
+else 
+"$file_name not found"
+
+- -d ( flag use for checking directory )
+
+- two type file 
+
+ 1) Charchete special file (Use flag -c )
+ 2) block specical file - video file, image file, ( Use flag -b )
+ 
+ file empty or not use flag -S 
+ whether file has read permission -r flag 
+ 
+ ## how to append output to the end of text file.
+ 
+   - Append some text to already exist.
+   - ( -f flag use for file is vailed or not ) 
+   - (> overright , >> appended in file 
+   
+## Logical && Operator ( and operator )
+
+ -  age=25
+ if [ "age" -gt 18" ] &&[ "age" -lt 30 ]
+ then 
+echo "vaild age"
+else
+echo "age is not valid" 
+fi
+
+# using -a flag instant of and (&&) flag 
+-  age=25
+ if [[ "age" -gt 18" -a "age" -lt 30 ]]
+ then 
+echo "vaild age"
+else
+echo "age is not valid" 
+fi
+
+## OR (|| ) logical operator its use for logical 
+
+-  age=25
+ if [ "age" -gt 18" ] || [ "age" -lt 30 ]
+ then 
+echo "vaild age"
+else
+echo "age is not valid" 
+fi
+
+-  age=25
+ if [[ "age" -gt 18" -o  "age" -lt 30 ]]
+ then 
+echo "vaild age"
+else
+echo "age is not valid" 
+fi
+
+## how to perform    ( used (( arthemtic operation ) 
+
+- num1=20
+num2=5
+
+echo $(( num1 + num2 ))
+
+- altername option to use arthmetic operation 
+
+echo $(expr $num1 + $num 2 )
+echo $(expr $num1 \* $num 2 )
+
+## floating point math operations in bash | bc commond
+
+- use decimal number in arthmetic operation 
+
+- specail tool - Basic calculator ( BC ) [ Man BC - language for basic configuration ] 
+
+num1=20.5
+num2=5
+
+echo "20.5+5" | bc
+echo "20.5-5" | bc
+echo "20.5*5" | bc 
+echo "20.5/5" | bc
+
+##Maths operatio  with BC 
+
+
+## The case statements for scripting 
+
+vehicle=$1
+ - case $vehicle in 
+      "car"  )    ( car ) 
+	      echo "Rent of $Vehicle" is 100 dollar" ; ;
+	  "Van" )
+	      echo "Rent of $Vehicle" is 80 dollar" ; ;
+	  "bike" )
+	      echo "Rent of $Vehicle" is 40 dollar" ; ;
+	  * )
+	      echo "Unknown vehical" ; ;
+		  
+	esac
+## use LANG=C for capital lanugae variable 
+
+## Need to learn pattern to read case 
+
+
+		  
+
+	      
+		  
+  
+ 
+ 
+ 
+ 
+ if [ file exists /etc/resolv.conf ]
+then
+    make a copy
+else
+    print an error on screen
+fi
+ 
+ 2) 
+
+  
+ echo $# - number of aruguments pass on bash script 
+  
+
+ 
+ 
+ -p input on same line 
+ -sp is use for 
+ -a array 
+ 
+ 
+  
+
+   
+ 
+ 

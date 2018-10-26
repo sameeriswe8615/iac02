@@ -1,0 +1,62 @@
+Source base installation 
+
+ Install EPEL
+ - In order to install EPEL repository execute following command:
+   
+     yum install epel-release -y
+	 
+# Download and unpack source code
+
+  - Next thing that you need are packages with source files. For compiling Apache, you will need 3 different packages - httpd itself, apr and apr-util. Last two are Apache Runtime libraries. They are required for Apache HTTPD.
+  
+  curl -O -L https://github.com/apache/httpd/archive/2.4.33.tar.gz
+curl -O -L https://github.com/apache/apr/archive/1.6.3.tar.gz
+curl -O -L https://github.com/apache/apr-util/archive/1.6.1.tar.gz\
+
+Unpack downloaded sources:
+
+tar -zxvf 2.4.33.tar.gz
+tar -zxvf 1.6.3.tar.gz
+tar -zxvf 1.6.1.tar.gz
+
+# APR and APR-Util
+
+	Apache requires APR library for compilation. You need to copy the source codes to correct directory:
+	
+  cp -r apr-1.6.3 httpd-2.4.33/srclib/apr
+cp -r apr-util-1.6.1 httpd-2.4.33/srclib/apr-util
+
+# Compile source code
+
+  - So get inside httpd directory and compile your Apache version:
+  
+    1) cd httpd-2.4.33
+	2) ./buildconf  :  First command ./buildconf will build 
+	3) ./configure :  	command will setup everything for compilation of Apache HTTPD. Here are the options that I use
+	
+	    --enable-ssl will build Apache with SSL support, so you can enable HTTPS on your websites.
+--enable-so will enable dynamically loaded modules. So you can enable and disable modules without recompilation (I will describe modules in configuration part)
+--enable-http2 will enable HTTP/2 support.
+--with-mpm will set multiprocessing modules for Apache. I'm using event, but you can use worker or prefork instead. event works best for me and I think that it is mpm that will give you most performance.
+--with-included-apr It will use APR library that you copied to srclib directory
+--with-ssl will point compiler to newer version of OpenSSL. Make sure that you compiled it first!
+--prefix is the installation path for Apache httpd compiled package
+
+# Install Httpd 
+
+  cd httpd-2.4.33
+  sudo make install ( its use to install from source code ) 
+  
+# Add Apache executables to PATH
+
+ If you try to type httpd -v in your command line, it will result in command not found. That's because httpd is not on your $PATH. I'd like to have all executables from Apache available from everywhere. In order to achieve that, create file
+ 
+ sudo vi /etc/profile.d/httpd.sh
+ 
+ and paste the following content 
+ 
+ pathmunge /usr/local/apache2/bin
+ 
+ 
+ 
+ 

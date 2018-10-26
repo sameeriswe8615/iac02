@@ -1,0 +1,3 @@
+Import-Csv .\students_2018_test.csv | foreach-object{
+New-ADUser -Name $_.Full_Name -AccountPassword (ConvertTo-SecureString $_.Password -AsPlainText -force) -CannotChangePassword $True -Description $_.Desc -DisplayName $_.Full_Name -EmailAddress $_.Email -Enabled $False -GivenName $_.First_Name -HomeDirectory $_.Homedir -HomeDrive $Homedri -PasswordNeverExpires $True -Path $_.Path -SamAccountName $_.Email -ScriptPath LogonS.cmd -Surname $_.Last_Name -UserPrincipalName $_.Email -passthru
+}

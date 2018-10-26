@@ -1,0 +1,74 @@
+http -v 
+yum install httpd
+yum group info "web server'
+# Main config file
+
+ /etc/httpd/conf/httpd.conf
+
+ DocumentRoot "/var/www/html"
+ 
+ Ngnix installation
+ 
+ 1) Epcl installation ( its package repositry ) 
+  
+    cd /tmp
+	wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+	cd /etc/yum ( You can see installer package )
+	
+	Cach Directory for Yum 
+	
+	- cachedir=/var/cache/yum/$basearch/$releasever
+	
+	/etc/init.d/nginx reload
+	
+	/etc/init.d/nginx restart
+	
+# If nginx compiled and installed from the source code
+
+  /usr/local/nginx/sbin/nginx -s reload
+  
+#Default Server Root
+
+ - Default server root dirertory 	
+   
+     /usr/share/nginx/html
+	 
+  - Server block configuration file 
+  
+      /etc/nginx/conf.d/default.conf
+	  
+# Ngnix global configuration
+
+  - /etc/nginx/nginx.conf
+  
+#Starting, Stopping, and Reloading Configuration
+
+  - nginx -s signal
+  
+  stop — fast shutdown
+quit — graceful shutdown
+reload — reloading the configuration file
+reopen — reopening the log files
+
+#Create New Server Block Files
+
+To begin, we will need to set up the directory that our server blocks will be stored in, as well as the directory that tells Nginx that a server block is ready to serve to visitors. The sites-available directory will keep all of our server block files, while the sites-enabled directory will hold symbolic links to server blocks that we want to publish. 
+
+mkdir /etc/nginx/sites-available
+mkdir /etc/nginx/sites-enabled
+
+# Default server block file location is 
+
+/etc/nginx/conf.d/default.conf
+
+# Nginx conf file 
+
+ /etc/nginx/nginx.conf
+ 
+# enable server block file to link up from default locatoin to new location.
+
+sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/example.com.conf
+sudo ln -s /etc/nginx/sites-available/example2.com.conf /etc/nginx/sites-enabled/example2.com.conf
+To begin, we will need to set up the directory that our server blocks will be stored in, as well as the directory that tells Nginx that a server block is ready to serve to visitors. The sites-available directory will keep all of our server block files, while the sites-enabled directory will hold symbolic links to server blocks that we want to publish. 
+  
+

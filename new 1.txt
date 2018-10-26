@@ -1,0 +1,65 @@
+Dot net 3.5 sp1 installation command 
+
+1. Go to a command prompt and enter this:
+
+dism /online /enable-feature /featurename:NetFX3 /all /Source:d:\sources\sxs /LimitAccess
+
+Note: Source should be the Windows installation disc. In my case, this was located on D:
+
+Process and eventlog related command
+1) get-process | sort-object -properties gm -desending |selct object -first 10
+2) get-process | sort-object -properties gm -desending |selct object -first 10 -propertie name,ID,pm,vm
+
+ 
+ 
+ get-command -noun object
+
+ How to check Services Status
+1) Get-service | where {$_.status -eq "stopped"}
+2) Get-service | where {$_.status -eq "Running"}
+3) get-service -name     B* | Where {$_.Status -eq "running" or Stopped"}
+4) get-service |where-object -filterscript {$_.Status -eq "running"}
+
+ 
+ how to check eventlog
+1) get-eventlog *
+2) get-eventlog -logname Application -computername localhost ( mention computer name ) | select-object -first 10
+3) get-eventlog -logname Application -computername localhost ( mention computer name ) | select-object -last 10
+4) get-eventlog -logname Application -computername localhost ( mention computer name ) | select-object -first 10 -propertiyin
+
+ WinRM use 5985 & 5986 SSL Port (Windows Remote Management use to take the control using WSMan - its standard protcol use between remote connection)
+
+ Inovoke command use to run powershell on remote computer
+
+ Get-psprovider ( You will get all the information related Power shell - it content Alias,wsman etc and its caoabilities )
+get-psdrive        ( you will get storage information of powershell content )
+Dir Alias ( to check all Alias )
+Dir Enviorment ( its show path of all directory ) 
+ get-content Env:\computername ( to find computer name - Gc is alias 
+ 
+ Short cut to use "MMC" console for short cut how we can use in powershell
+
+ 1) to use MMC usefull we add snapin to shortcut 
+ 2) Get-Pssnapin ( use to open MMC console in powershell
+
+ 
+ How to get  process and service in htm format
+
+ 1) get-service | convertTo-html -property -name,  Status | out-file c:\test.htm
+    c:\test.htm
+                
+                same think for process also 
+                Get-Service | Select-Object Name, Status | Export-CSV c:\service.csv 
+                
+                Get-EventLog -Log "Application" 
+                
+
+
+Thank you,
+Sameer Iswe
+
+ 
+
+B2X Service Solutions India Private Limited
+Solitaire Corporate Park Bldg No.10 4th Floor Andheri- Kurla Road, Andheri (East ) Mumbai – 400 093 India.
+

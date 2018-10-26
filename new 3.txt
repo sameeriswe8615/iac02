@@ -1,0 +1,52 @@
+Ana Ivanova: Set-ExecutionPolicy Unrestricted
+$UserCredential = Get-Credential
+$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+Import-PSSession $Session
+
+1:25 PM Ana Ivanova: s
+1:26 PM Ana Ivanova: $UserCredential = Get-Credential
+1:27 PM Ana Ivanova: $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://outlook.office365.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
+1:28 PM Ana Ivanova: Import-PSSession $Session
+1:30 PM Ana Ivanova: Get-Mailbox -Identity Mailbox
+1:33 PM Mr. Sameer: ExchangeGuid                           : c556a467-72ff-4fc6-bd66-cd3a613f5db0
+
+Open Powershell with Admin_SI@b2x.com use this ID to connect office365 using Powershell 
+Set-ExecutionPolicy RemoteSigned 
+	$LiveCred = Get-Credential 
+	$Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell/ -Credential $LiveCred -Authentication Basic -AllowRedirection 
+Import-PSSession $Session
+
+
+#Enable global audit logging
+
+Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailbox" -or RecipientTypeDetails -eq "SharedMailbox" -or RecipientTypeDetails -eq "RoomMailbox" -or RecipientTypeDetails -eq "DiscoveryMailbox"} | Set-Mailbox -AuditEnabled $true -AuditLogAgeLimit 180 -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update,UpdateFolderPermissions -AuditDelegate Create,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions -AuditAdmin Copy,Create ,HardDelete ,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions
+
+#To verfily global audit logs 
+
+Get-Mailbox -ResultSize Unlimited -Filter {RecipientTypeDetails -eq "UserMailbox"} | FL Name,Audit*
+
+# Sigle user Audit logging 
+
+Set-Mailbox -Identity "Admin_AK" -AuditEnabled $true -AuditLogAgeLimit 90 -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update,UpdateFolderPermissions -AuditDelegate Create,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions -AuditAdmin Copy,Create ,HardDelete ,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions
+
+#To verfily global audit logs 
+
+#To Verfily Audit 
+
+Get-Mailbox -Identity "Admin_SC" | FL Audit*
+
+
+Import-Csv 'D:\Office365\headoffice.csv' |
+ForEach{
+  Get-Mailbox -Identity $_.name | 
+  Select-Object Name,IssueWarningQuota,ProhibitSendQuota,ProhibitSendReceiveQuota | 
+  Sort-Object Name
+}	
+
+Import-Csv 'D:\Office365\headoffice.csv' |
+ForEach{
+  Get-Mailbox -Identity $_.name |
+  Get-Mailbox -Identity $_.name | -AuditEnabled $true -AuditLogAgeLimit 90 -AuditOwner Create,HardDelete,MailboxLogin,Move,MoveToDeletedItems,SoftDelete,Update,UpdateFolderPermissions -AuditDelegate Create,HardDelete,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions -AuditAdmin Copy,Create ,HardDelete ,Move,MoveToDeletedItems,SendAs,SendOnBehalf,SoftDelete,Update,UpdateFolderPermissions
+
+
+
