@@ -134,3 +134,45 @@
  132 Get-Service | Get-Member                                                                                            
  133 Get-Help Get-Date -Examples                                                                                         
  134 Get-Help                                                                                                            
+
+
+#27/10/2018
+Write-host "Hekko NTMS"
+Write-Host "Hello NTMS" -BackgroundColor Green -ForegroundColor DarkRed
+
+$firstname=Read-Host -Prompt "First name"
+$lastname=Read-Host -Prompt "Last Name"
+Write-Host "your full name is $firstname $lastname"
+
+[int]$fimberstnur=Read-Host -Prompt "First Number"
+[int]$secondnumber=Read-Host -Prompt "second number"
+write-host " your addition is" ([int]$fimberstnur+[int]$secondnumber)
+
+#Array
+$testarray=@("green","yellow","Sameer",1)
+$testarray[0]
+$testarray[-1]
+$testarray+=3
+$testarray.Remove("green")
+Get-Member -InputObject $testarray
+
+#hash table ( Collection of pair - pair its key and value )
+key=value
+$var=@{ } to define hash use this method
+$hashtable=@{name="Sameer";
+                lastname="Iswe"}
+                
+  $hashtable["name"]
+
+#IMP Commond 
+get-help about_Arrays
+
+#Pileline 
+Get-Process | Where-Object {$_.WS -gt "100mb}
+
+Get-ChildItem C:\Windows | select Mode, @{n="id" ; e="{$_.Length}"}
+Get-Service | select Displayname | Out-File -FilePath c:\t1.txt
+Invoke-Item C:\t1.txt
+Result - Get-Service -DisplayName (Get-Content -Path C:\t1.txt)
+
+
