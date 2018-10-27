@@ -1,0 +1,191 @@
+Id CommandLine                                                                                           
+  -- -----------                                                                                           
+   1 Write-Host "hello NTMs"                                                                               
+   2 Write-Host | gm                                                                                       
+   3 Write-Host |Get-Member                                                                                
+   4 Write-Host |Get-Member                                                                                
+   5 Write-Host "hello NTMs"...                                                                            
+   6 Get-Help Write-Host                                                                                   
+   7 Write-Host "Hello NTMS" -BackgroundColor Green -ForegroundColor Cyan                                  
+   8 Write-Host "Hello NTMS" -BackgroundColor Green -ForegroundColor DarkRed                               
+   9 Write-Host "Hello NTMS" -BackgroundColor Green -ForegroundColor DarkRed                               
+  10 Write-Host | Get-Member                                                                               
+  11 Get-Help Write-Host -Examples                                                                         
+  12 Write-Output "Hello NTMS" | Get-Member...                                                             
+  13 Read-Host...                                                                                          
+  14 Read-Host                                                                                             
+  15 Read-Host                                                                                             
+  16 $var=your name is                                                                                     
+  17 $var="your name is"                                                                                   
+  18 Write-Host "Your name is" $var                                                                        
+  19 $var="sameer"                                                                                         
+  20 Write-Host "Your name is" $var                                                                        
+  21 $name=Read-Host...                                                                                    
+  22 $name=Read-Host...                                                                                    
+  23 Write-Host "your name is $name"...                                                                    
+  24 Read-Host -Prompt...                                                                                  
+  25 Get-Help Read-Host -Examples                                                                          
+  26 Read-Host -Prompt test                                                                                
+  27 Read-Host -Prompt Name                                                                                
+  28 Read-Host -Prompt Fullname                                                                            
+  29 Read-Host -Prompt Fullname, lastname                                                                  
+  30 $fullname...                                                                                          
+  31 $fullname=sameer...                                                                                   
+  32 $fullname="sameer"...                                                                                 
+  33 $lastname="iswe"...                                                                                   
+  34 $fullname                                                                                             
+  35 $firstname=Read-Host -Prompt "First name"...                                                          
+  36 $lastname=Read-Host -Prompt "Last Name"...                                                            
+  37 Write-Host "your fulle name is $firstname $lastname"                                                  
+  38 Write-Host "your full name is $firstname $lastname"                                                   
+  39 $firstnumber=Read-Host -Prompt "First Number"...                                                      
+  40 $secondnumber=Read-Host -Prompt "second number"...                                                    
+  41 write-host " your addition is $firstname+$secondnumber"                                               
+  42 $var1=$firstname+$secondnumber...                                                                     
+  43 $firstnumber=Read-Host -Prompt "First Number"...                                                      
+  44 $secondnumber=Read-Host -Prompt "second number"...                                                    
+  45 $firstnumber                                                                                          
+  46 $firstnumber+$secondnumber                                                                            
+  47 Get-Help "+"                                                                                          
+  48 $firstnumber | gm                                                                                     
+  49 [int]$firstnumber=Read-Host -Prompt "First Number"...                                                 
+  50 [int]$secondnumber=Read-Host -Prompt "second number"...                                               
+  51 write-host " your addition is $firstname+$secondnumber"                                               
+  52 write-host " your addition is $firstnumber+$secondnumber"                                             
+  53 write-host " your addition is" $firstnumber+$secondnumber                                             
+  54 [int]$secondnumber=Read-Host -Prompt "second number"...                                               
+  55 [int]$firstnumber=Read-Host -Prompt "First Number"...                                                 
+  56 $totlal=$firstnumber+$secondnumber...                                                                 
+  57 [int]$fimberstnur=Read-Host -Prompt "First Number"...                                                 
+  58 $testarray=@(green, yellow, "Sameer")                                                                 
+  59 $testarray=@(green,yellow,Sameer)                                                                     
+  60 $testarray=@("green","yellow","Sameer")                                                               
+  61 $testarray                                                                                            
+  62 $testarray | gm                                                                                       
+  63 $testarray.Count                                                                                      
+  64 $testarray.Contains(sameer)                                                                           
+  65 $testarray.Contains(sameer                                                                            
+  66 $testarray.Contains("sameer")                                                                         
+  67 $testarray.Contains(sameer)                                                                           
+  68 $testarray.Contains(1)                                                                                
+  69 $testarray=@("green","yellow","Sameer",1)                                                             
+  70 $testarray.Contains(1)                                                                                
+  71 $testarray.Contains(sameer)                                                                           
+  72 $testarray.Contains("sameer")                                                                         
+  73 $testarray.Contains("Sameer")                                                                         
+  74 $testarray.[0]                                                                                        
+  75 $testarray[0]                                                                                         
+  76 $testarray[-1]                                                                                        
+  77 $testarray[-2]                                                                                        
+  78 $testarray[-3]                                                                                        
+  79 $testarray[-4]                                                                                        
+  80 $testarray+=3                                                                                         
+  81 $testarray                                                                                            
+  82 $testarray-=2                                                                                         
+  83 $testarray.Remove(3)                                                                                  
+  84 $testarray.Remove(1)...                                                                               
+  85 $testarray.Remove(1)...                                                                               
+  86 $testarray.Remove("green")...                                                                         
+  87 $testarray.Remove(0)                                                                                  
+  88 $testarray.Remove[0]                                                                                  
+  89 $testarray                                                                                            
+  90 $testarray | gm                                                                                       
+  91 Get-Member -InputObject $testarray                                                                    
+  92 $hashtable=@{name="Sameer"; lastname="Iswe"}...                                                       
+  93 $hashtable=@{name="Sameer"; lastname="Iswe"}...                                                       
+  94 $hashtable                                                                                            
+  95 $hashtable | gm                                                                                       
+  96 $hashtable                                                                                            
+  97 $hashtable["name"]                                                                                    
+  98 $hashtable["lastname"]                                                                                
+  99 $hashtable.Count                                                                                      
+ 100 $hashtable.Values                                                                                     
+ 101 $hashtable.Remove("Iswe")                                                                             
+ 102 $hashtable.Values                                                                                     
+ 103 $hashtable.Contains("iswe")                                                                           
+ 104 $hashtable.Contains("Iswe")                                                                           
+ 105 $hashtable.ContainsKey("Iswe")                                                                        
+ 106 $hashtable.ContainsKey(Iswe)                                                                          
+ 107 $hashtable.ContainsKey[Iswe]                                                                          
+ 108 $hashtable.ContainsKey["Iswe"]                                                                        
+ 109 $hashtable.IsReadOnly                                                                                 
+ 110 $hashtable.ContainsValue(Iswe)                                                                        
+ 111 $hashtable.ContainsValue("Iswe")                                                                      
+ 112 get-help about_Arrays                                                                                 
+ 113 Get-Service | Stop-Process                                                                            
+ 114 Get-Service | Stop-Process                                                                            
+ 115 Get-Process                                                                                           
+ 116 Get-Help Stop-Process -ShowWindow                                                                     
+ 117 Get-Process | gm                                                                                      
+ 118 Get-Service | Where-Object {$_.Name -eq "*win*"}                                                      
+ 119 Get-Service | Where-Object {$_.Name -eq "win"}                                                        
+ 120 Get-Service -Name bits | Where-Object {$_.Name -eq "win"}                                             
+ 121 Get-Service -Name bits | Where-Object {$_.Name }                                                      
+ 122 Get-Service -Name bits | Where-Object {$_.Name}                                                       
+ 123 Get-Service | Where-Object {$_.DisplayName}                                                           
+ 124 Get-Service | Where-Object {$_.DisplayName -eq "Computer Browser"}                                    
+ 125 Get-Service | Where-Object {$_.DisplayName $_.Name -eq "Computer Browser"}                            
+ 126 Get-Service | Where-Object {$_.DisplayName $_.Name -eq "Bluetooth Handsfree Service"}                 
+ 127 Get-Service | Where-Object {$_.DisplayName, $_.Name -eq "Bluetooth Handsfree Service"}                
+ 128 Get-Process | Where-Object {$_.Id -gt "500"}                                                          
+ 129 Get-Process | Where-Object {$_.VM -gt "100"}                                                          
+ 130 Get-Process | Where-Object {$_.WS -gt "100"}                                                          
+ 131 Get-Process | Where-Object {$_.WS -gt "100mb"}                                                        
+ 132 Get-ChildItem -Directory C:\Windows                                                                   
+ 133 Get-ChildItem "c:\" | Where-Object {$_.Directory}                                                     
+ 134 Get-ChildItem "c:\" | Where-Object {$_.Directory -ilike "Folder"}                                     
+ 135 Get-ChildItem "C:\Windows"                                                                            
+ 136 Get-ChildItem "C:\Windows" | gm                                                                       
+ 137 Get-Item "C:\Windows" | gm | Out-File                                                                 
+ 138 Get-Item "C:\Windows" | gm | Out-File -FilePath c:\file.txt                                           
+ 139 Get-Item "C:\file.txt" | gm | Out-File -FilePath c:\fileitem.txt                                      
+ 140 Get-ChildItem "C:\Windows" | Where-Object {$_.psiscontainer $true}                                    
+ 141 Get-ChildItem "C:\Windows" | Where-Object {$_.psiscontainer -eq $true}                                
+ 142 Get-ChildItem | gm                                                                                    
+ 143 Get-ChildItem | gm                                                                                    
+ 144 Get-ChildItem | select size | Get-Process                                                             
+ 145 Get-ChildItem | gm                                                                                    
+ 146 Get-ChildItem                                                                                         
+ 147 Get-ChildItem | gm                                                                                    
+ 148 Get-ChildItem | select Length, Lastwritetime | Get-Process                                            
+ 149 Get-ChildItem | gm                                                                                    
+ 150 Get-ChildItem | select Mode, @{n="id" ,e="{$_.lenght}"}                                               
+ 151 Get-ChildItem C:\Windows | select Mode, @{n="id",e="$_.Length}"}                                      
+ 152 Get-ChildItem C:\Windows | select Mode, @{n="id",e="{$_.Length}"}                                     
+ 153 Get-ChildItem C:\Windows | select Mode, @{n="id",e={$_.Length}}                                       
+ 154 Get-ChildItem C:\Windows | select Mode, @{n=id,e={$_.Length}}                                         
+ 155 Get-ChildItem C:\Windows | select Mode, @{n=id,e=$_.Length}                                           
+ 156 Get-ChildItem C:\Windows | select Mode, @{"n=id,e=$_.Length"}                                         
+ 157 Get-ChildItem | select Mode, @{"n=id,e=$_.Length"}                                                    
+ 158 Get-ChildItem C:\Windows | select Mode, @{"n=id;e=$_.Length"}                                         
+ 159 Get-ChildItem C:\Windows | select Mode, @{n=id ; e=$_.Length}                                         
+ 160 Get-ChildItem C:\Windows | select Mode, @{n="id" ; e="{$_.Length}"}                                   
+ 161 Get-Service -ComputerName                                                                             
+ 162 hostname                                                                                              
+ 163 Get-Service | gm                                                                                      
+ 164 Get-Service | gm | Out-File                                                                           
+ 165 Get-Service | gm | Out-GridView                                                                       
+ 166 Get-Service | select Displayname | Get-Service                                                        
+ 167 Get-Service | select Displayname | Out-File                                                           
+ 168 Get-Service | select Displayname | Out-File -FilePath c:\t1.txt                                       
+ 169 Invoke-Item C:\t1.txt                                                                                 
+ 170 Get-Service -DisplayName (Get-Content C:\t1.txt)                                                      
+ 171 Get-Service -DisplayName (Get-Content "C:\t1.txt")                                                    
+ 172 Get-Service -DisplayName (Get-Content -Path C:\t1.txt)                                                
+ 173 Get-Service -DisplayName (Get-Content -Path "C:\t1.txt")                                              
+ 174 Get-Service -DisplayName (Get-Content -Path C:\t1.txt)                                                
+ 175 Get-Service -DisplayName (Get-Content -Path [C:\t1.txt])                                              
+ 176 Get-Service -DisplayName (Get-Content -Path C:\t1.txt)                                                
+ 177 Get-History                                                                                           
+ 178 Get-Service -DisplayName                                                                              
+ 179 Get-Help *displayname* -Examples                                                                      
+ 180 Get-Service | select DisplayName                                                                      
+ 181 Get-Service | select DisplayName | Out-File -FilePath c:\new.txt                                      
+ 182 Get-Content C:\new.txt                                                                                
+ 183 Get-Help Get-Content -Examples                                                                        
+ 184 Get-Service -DisplayName (Get-Content -Path C:\t1.txt -Include)                                       
+ 185 Get-Service -DisplayName (Get-Content -Path C:\t1.txt -TotalCount)                                    
+ 186 Get-Service -ComputerName (Get-Content C:\new.txt)                                                    
+ 187 Get-Service -ComputerName                                                                             
+ 188 Get-Service -ComputerName localhost                                                                   
+ 189 Get-Service -ComputerName localhost (Get-Content -Path C:\new.txt)
