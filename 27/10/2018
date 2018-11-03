@@ -212,5 +212,52 @@ for ($e=1;$e -le 4;$e++)
 
        Write-Host ""
     }
+   ## how to create multipfile 
+   
+   for($f=1.txt; $f -le 10;$f++) 
+{remove-Item -ItemType file -Path C:\sameer\$f.txt}
+
+#while 
+
+while(Get-Process -Name "notepad")
+{ Stop-Process -name "notepad"
+}
+
     
     
+    
+  # how to remove multiple file using foreach
+   $files=Get-ChildItem -Path C:\sameer
+foreach($file in $files)
+{
+Remove-Item -Path C:\sameer\$file
+} 
+
+## if codition 
+
+$date=(get-date).AddYears(-3)
+ $files=Get-ChildItem -Path C:\Windows\System32 *.dll
+foreach($file in $files)
+{
+if($file.CreationTime -lt $date)
+  { Write-Host " this file $file.name is older then 2015" -BackgroundColor Blue
+  }
+  else
+  {
+  Write-Host "this file $file.name not older then 2015" -BackgroundColor Green
+  }
+}
+
+# new example 
+
+$oldstate=Import-Csv C:\process1.txt
+$newstate=get-process
+foreach ($new in $newstate)
+{
+if ($oldstate |? {$_.name -eq $new.Name})
+{ Write-Host "no worries"
+}
+else
+{$new.Name |Out-File -FilePath c:\report.text -Append
+}
+}
