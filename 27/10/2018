@@ -189,3 +189,28 @@ Id CommandLine
  187 Get-Service -ComputerName                                                                             
  188 Get-Service -ComputerName localhost                                                                   
  189 Get-Service -ComputerName localhost (Get-Content -Path C:\new.txt)
+ 
+ ## 3/11/18
+ # For Loop 
+ $b=@(1,2,3,4)
+for ($c=0;$c -le 4;$c++)
+{$b[$c]}
+
+$1="*"
+for ($d=0;$d -le 5;$d++){Write-Host $1}
+
+for ($e=4;$e -ge 1;$e--)
+{for($f=0;$f -lt $e;$f++){Write-Host "*" -NoNewline} Write-Host ""}
+
+
+for ($e=1;$e -le 4;$e++)
+    {
+        for($f=0;$f -lt $e;$f++)
+            {
+                Write-Host "*" -NoNewline
+            }
+
+       Write-Host ""
+    }
+    
+    
