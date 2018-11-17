@@ -315,3 +315,12 @@ $process= Get-Process
 foreach ($proces in $process)
 { Write-Host " the ID of $($proces.Id) is $($proces.ProcessName)"
 }
+
+
+##
+
+for($f=1;$f -le 10;$f++)
+{
+    New-Item -Path C:\sameer\$f.log -ItemType file
+    
+    
