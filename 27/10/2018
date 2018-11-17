@@ -261,3 +261,57 @@ else
 {$new.Name |Out-File -FilePath c:\report.text -Append
 }
 }
+
+#17/11/2018
+1) below commond use to output using pipe 
+Get-Service | Export-Csv -Path C:\sameer\services.csv -Delimiter "|"
+
+2) get process of all computer from exporting csv
+
+$comps= Get-Content -Path C:\sameer\comname.txt
+foreach ($comp in $comps)
+{ "fetching details from $comp | out-file -path c:\sameer\tst.csv -append
+get-process -computername -$comp |out-file -path c:\sameer\tst.csv -append
+}
+
+
+##
+
+$start=0
+$send=$comps.Length -1
+
+for ($start;$start -le $send; $start++)
+{ $one=$comps[$start] 
+"fetching details from $one"
+}
+
+## contiune a,b,c,d
+
+$start=65
+$end=91
+for ($start;$start -le $end;$start++)
+{ Write-Host $([char]$start)
+}
+
+For small alphablate value 
+
+$start=65
+$end=90
+$small=([char]65).ToString().ToLower()
+for ($start;$start -le $end;$start++)
+{ Write-Host $([char]$start).ToString().ToLower()
+}
+
+# to get information from all the services
+
+$services= Get-Service
+foreach ($service in $services)
+{ Write-Host "the display name of $($service.Name) is $($service.DisplayName)"
+}
+
+# to get information from all process
+
+$process= Get-Process
+foreach ($proces in $process)
+{ Write-Host " the ID of $($proces.Id) is $($proces.ProcessName)"
+}
