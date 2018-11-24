@@ -397,3 +397,55 @@ $info = ""
       }
       $info | Out-File -FilePath C:\sameer\se4.txt -Append
   }
+
+
+## regular expression 
+
+$var= Read-Host
+
+if ($var -match "^([a-z]{3}\-[a-z]{2}\-[a-z]{1})$")
+
+{ Write-Host "this condition true"
+}
+
+else 
+  { Write-Host "this condition is false"
+  }
+  
+  
+  ###### While condition use####
+  
+  $condition = $true
+while($condition)
+{
+#Ask for input
+
+    $xinup=Read-host 
+
+    #Validate the input
+    If ($xinup -match "^[win]{3}\-[sr]{2}\-[s]{1}$")
+    {
+
+        Write-Host "You are correct"
+        $condition= $false
+    }
+    else
+    {
+        Write-Host "You are wrong"
+    }
+}
+
+## object
+
+
+
+$users = New-Object System.Object
+$users | Add-Member -MemberType NoteProperty -Name "fname" -Value "Dinesh"
+$users | Add-Member -MemberType NoteProperty -Name "lName" -Value "Patil"
+$users | Add-Member -MemberType ScriptMethod -Name "samaccount"-Value {"$($($this.fname).substring(0,1))"+"$($this.lName)"}
+
+
+$azurevm = New-Object System.Object
+$azurevm | Add-Member -MemberType noteProperty -Name "note" -Value "my vm"
+$azurevm | Add-Member -MemberType NoteProperty -Name status -Value "runining"
+
