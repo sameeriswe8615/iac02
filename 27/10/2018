@@ -324,3 +324,76 @@ for($f=1;$f -le 10;$f++)
     New-Item -Path C:\sameer\$f.log -ItemType file
     
     
+## All service startup #24/11/2018
+
+$services= Get-Service 
+
+ foreach ($service in $services)
+ { $service.StartType
+
+    if ( $service.StartType -eq "Automatic")
+          { Write-Host " This $service.name startup is Automatic"
+          }
+    elseif ( $service.StartType -eq "Manual")
+           { Write-Host " This $service.name startup is Manual"
+           }
+    else
+           { Write-Host " this $service.name startup is Disabled"
+           }
+    }
+    
+    # spacifi servic in details 
+    
+    $services= Get-Service 
+
+ foreach ($service in $services)
+ { $service.StartType
+
+    if ( $service.StartType -eq "Automatic")
+          { Write-Host " This $($service.DisplayName) startup is Automatic"
+          }
+    elseif ( $service.StartType -eq "Manual")
+           { Write-Host " This $($service.DisplayName) startup is Manual"
+           }
+    else
+           { Write-Host " this $($service.DisplayName) startup is Disabled"
+           }
+    }
+    
+    ## out put want in csv format 
+    
+    $services= Get-Service 
+$info = ""
+ foreach ($service in $services)
+ { $service.StartType
+
+    if ( $service.StartType -eq "Automatic")
+          { $info= " This $($service.DisplayName) startup is Automatic"
+          }
+    elseif ( $service.StartType -eq "Manual")
+           { $info=" This $($service.DisplayName) startup is Manual"
+           }
+    else
+           { $info= " this $($service.DisplayName) startup is Disabled"
+           }
+    } 
+
+    $info | Out-File -FilePath C:\sameer\temp.csv -Append
+ 
+ 
+ # another way for service - use case " switch" 
+ 
+ $services= Get-Service 
+$info = ""
+ foreach ($service in $services)
+ {
+   Switch ($service.StartType)
+   {
+   "Automatic" {$info= "This $($service.DisplayName) is Automatic"}
+      
+       "Manual" {$info= "This $($service.DisplayName) is Manual"}
+        
+      "Disabled" {$info= "This $($service.DisplayName) is Disabled"}
+      }
+      $info | Out-File -FilePath C:\sameer\se4.txt -Append
+  }
