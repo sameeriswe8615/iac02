@@ -449,3 +449,66 @@ $azurevm = New-Object System.Object
 $azurevm | Add-Member -MemberType noteProperty -Name "note" -Value "my vm"
 $azurevm | Add-Member -MemberType NoteProperty -Name status -Value "runining"
 
+######1/12/2018####
+
+"28-06-1988" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-]|(0?[1-9]|1[0-2])[-]|\d\d)"
+
+
+ Id CommandLine                                                                                                            
+  -- -----------                                                                                                            
+   1 "28-06-1988" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-]|(0?[1-9]|1[0-2])[-]|\d\d)"                                         
+   2 "28-06-1988" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-]|(0?[1-9]|1[0-2])[-]|\d\d)$"                                        
+   3 "28-06-1988" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-]|(0?[1-9]|1[0-2])[-]|\d\d$"                                         
+   4 "28-06-1988" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-](0?[1-9]|1[0-2])[-]\d\d$"                                           
+   5 "28-06-88" -match "^(0?[1-9]|[12][0-9]|3[0-1])[-](0?[1-9]|1[0-2])[-]\d\d$"
+   
+   
+   ##### Credentials ########
+   
+   $cred= Get-Credential
+
+$cred | Get-Member
+
+TypeName: System.Management.Automation.PSCredential
+
+## TO save password to run 
+
+
+$username= "Administrator"
+$password= "ntms" | ConvertTo-SecureString -AsPlainText -Force
+
+$cred= New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $username, $password
+
+## convert secure string password 
+
+$pass = $password | ConvertFrom-SecureString
+
+$pass | Out-File -FilePath C:\sameer\ps2.txt
+
+##
+
+$passw = Get-Content -Path C:\sameer\ps2.txt | ConvertTo-SecureString
+
+## find powershell profile path
+
+  $profile
+  
+  New-Item -Path C:\Users\Administrator\Documents\WindowsPowerShell\Microsoft.PowerShellISE_profile.ps1 -ItemType file -Force
+invoke-item $profile
+
+
+### PS Custom object 
+
+$hashtable=@{fname="dinesh"
+             lname="Patile" }
+
+$object=[pscustomobject] $hashtable
+
+### another way
+- user above hashtable variable 
+New-Object pscustomobject -Property $hashtable
+
+
+
+
+
