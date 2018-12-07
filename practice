@@ -1,0 +1,21 @@
+Practice 
+1) 1) Get all files in your Windows directory that have a two-digit number as part of
+the name. 
+
+$windows = Get-Contact C:\Windows\
+
+if ($windows -match "^[0-2]{2}")
+
+{Write-Host "below are the $($windows.name)"}
+
+2) Write a regex to validate the IPv4 address.
+
+$ip = Read-Host "Enter your IP Address"
+if ($IP -match "[^[192]{3}\-[168]{3}\-[175]{3}\-[0-254]{3}]")
+
+    {write-host "this $ip is correct"}
+
+else {Write-Host "THis $ip is incorrect"}
+
+
+3) Write  aregex to vaildate the Email Address.
