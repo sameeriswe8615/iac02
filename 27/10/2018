@@ -508,7 +508,73 @@ $object=[pscustomobject] $hashtable
 - user above hashtable variable 
 New-Object pscustomobject -Property $hashtable
 
+1)? = option
+2) [] = single charchter
+3) () = group
+4) | = or
+5) {} = 
 
+#######################################################################################################################################
+
+7/12/2018
+
+1) Powershell class
+
+Ex:- 
+
+Class VM
+  {
+           $name
+     [string]status()
+     
+        { return "Stopped" 
+      }           
+                
+                }
+
+
+2)  create self sign certificate
+
+New-SelfSignedCertificate -DnsName $comp -CertStoreLocation "Cert:\LocalMachine\my"
+
+
+PSRemoting  
+
+Enable-PSRemoting on remote machine 
+5985
+5986 - port for remote connection
+
+$username = Vinyak
+$password = ntms
+$cred = Get-Credential
+
+Enter-PSSession -ComputerName pc2 -Credential $cred 
+
+$comp = ($env:COMPUTERNAME)
+
+$comp
+## how to create certificate
+
+New-SelfSignedCertificate -DnsName $comp -CertStoreLocation "Cert:\LocalMachine\my"
+
+use certificate for https listner 
+
+New-Item -Path WSMan:\localhost\Listener -Transport HTTPS -Address * -CertificateThumbPrint 80302973D9657E4F841259150831F2EDD76DDD50
+
+Get-Item WSMan:\localhost\Client\TrustedHosts
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value 1.1.1.1
+
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value 1.1.1.1 -Concatenate -Force
+
+$ps = New-PSSessionOption -SkipCACheck
+
+Enter-PSSession -ComputerName pc2 -Credential $cred -Port 5986 -SessionOption $ps -UseSSL
+
+Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $ps -ScriptBlock {hostname}
+
+
+Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $ps -ScriptBlock {Get-Service | Where-Object {$_.status -eq "stopped"}}
 
 
 
