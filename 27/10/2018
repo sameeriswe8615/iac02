@@ -548,6 +548,11 @@ $username = Vinyak
 $password = ntms
 $cred = Get-Credential
 
+Enable-PSRemoting -SkipNetworkProfileCheck (to skip error)
+$nsession = New-PSSessionOption -SkipCACheck
+New-PSSession -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $nsession
+Enter-PSSession -Id 2
+
 Enter-PSSession -ComputerName pc2 -Credential $cred 
 
 $comp = ($env:COMPUTERNAME)
@@ -576,5 +581,12 @@ Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOp
 
 Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $ps -ScriptBlock {Get-Service | Where-Object {$_.status -eq "stopped"}}
 
+### on remote location for particular service
+$servicename = Read-Host "enter service"
+Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $nsession -ArgumentList $servicename -ScriptBlock {Get-Service -Name $args[0]}
 
 
+Mulitple service
+
+$servicename = @("Bits","Winrm")
+Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $nsession -ArgumentList $servicename -ScriptBlock {Get-Service -Name $using:servicename}
