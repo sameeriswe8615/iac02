@@ -1,0 +1,22 @@
+######## Step 1 ########
+Get-ADUser -Filter ‘Enabled -eq $False’ | ForEach {Move-ADObject -Identity "$_" -TargetPath "OU=DisabledUserAccounts,DC=domain,DC=com"}
+
+##### another option step 2 #############
+
+$thresholdDate = (get-date).AddDays(-90)
+
+$oldUsers = get-aduser -filter * -searchbase "ou=Users,ou=middle,ou=top,dc=contoso,dc=com" -properties whenCreated,LastLogonDate | 
+where {$_.whenCreated -lt $thresholdDate -And $_.LastLogonDate -lt $thresholdDate}
+
+$date=Get-Date -Format "dMy"
+$path="C:\Scripts\TestScript_disable_users_$date.csv"
+
+$oldUsers | export-CSV -notypeinformation $path
+
+$oldUsers | DisableADAccount
+
+
+### option 3 #######
+
+
+
