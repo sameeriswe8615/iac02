@@ -590,3 +590,27 @@ Mulitple service
 
 $servicename = @("Bits","Winrm")
 Invoke-Command -ComputerName pc2 -Credential $cred -UseSSL -Port 5986 -SessionOption $nsession -ArgumentList $servicename -ScriptBlock {Get-Service -Name $using:servicename}
+
+
+####################22/12/18#####################
+
+function get-myfunction
+
+  { 
+     Get-Item -Path C:\sameer
+
+    }
+    
+    then run : get-myfunction
+    
+    function get-ps1
+
+ { 
+     Get-Process
+
+     }
+
+run . c:\sameer\ps1.ps1
+
+get-ps1
+
