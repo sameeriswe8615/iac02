@@ -614,3 +614,170 @@ run . c:\sameer\ps1.ps1
 
 get-ps1
 
+function get-ps1
+
+ { 
+     Get-Process
+
+     }
+
+
+function get-serverdetails ($computername, $servicename)
+
+  {  
+      Write-Host "This is your input $computername, $servicename"
+              }
+
+    get-serverdetails PC_NTMS23 BITS
+
+function get-osdetails
+
+   { 
+       Param ($compname)
+
+       
+       $os = Get-WmiObject -ComputerName $compname -Class win32_operatingsystem
+           
+           Write-Host $os
+           
+               }
+
+    get-osdetails -compname "PC_NTMS23"
+#############################################################################
+    function get-osdetails
+
+    {  
+         [CmdletBinding()]
+
+         Param ([Parameter (mandatory = $true)]
+
+         $compname
+         )
+         
+        }
+
+
+         function get-osdetails
+
+    {  
+         [CmdletBinding()]
+
+         Param ([Parameter (mandatory = $true,helpmessage= "give computer name")]
+
+         $compname
+         )
+         
+        }
+
+
+            function get-osdetails
+
+    {  
+         [CmdletBinding()]
+
+         Param $($_.Displayname)
+
+         [int]$compname
+         )
+         
+        }
+
+
+##########################################Advance Function ##################
+
+
+function get-processdisplayname
+
+ { 
+     [CmdletBinding()]
+
+     Param ([Parameter (mandatory = $true, valuefrompipelineby = $true)]
+     
+        [int] $ID
+            )      
+                        
+
+
+      Begin { Write-Host "This is my begin blcok"          }
+
+      Process { Write-Host "$($_.ID)"      }
+
+      End { Write-Host "This is my end blcok"  }
+
+      
+           }
+
+    Get-Process | get-processdisplayname
+
+
+    ##############
+
+    function get-servicedisplayname
+
+ { 
+     
+
+     begin { }
+
+    process {   Write-Host "$($_.Displayname)" }    
+       
+       end { }                     
+          
+           }
+
+    get-service | get-servicedisplayname
+
+
+    Get-Help about_Functions_Advanced_Parameters -ShowWindow
+
+
+    ################
+
+    function get-servicedetails
+
+    {
+      [CmdletBinding()]
+
+      param ([parameter(valuefrompipelinebypropertyname = $true)]
+      
+      $name
+          )
+
+          [validatenotnullorempty]
+      
+      }
+
+      Get-Service | get-serverdetails
+
+###########################################################
+
+$Error.Clear()
+$Error[0] |gm
+$Error[0].Exception
+$Error[0].
+
+$ErrorActionPreference ="continue"
+$ErrorActionPreference = "Inquire"
+$ErrorActionPreference
+get-Hello2 -erroractionignore
+$Error[0]
+
+Test-Connection sameer -ErrorAction Ignore
+$Error[0]
+Get-Service
+##################################
+Test-Connection -ComputerName sameer 
+
+try
+   { 
+      Test-Connection
+
+      }
+Catch 
+
+{  
+  Write-Host "Error occoured"
+ 
+  }
+
+  $_ | gm
