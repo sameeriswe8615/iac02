@@ -781,3 +781,67 @@ Catch
   }
 
   $_ | gm
+  
+  
+  ######################################################
+  
+  
+$myvm = New-Object -TypeName vm 
+
+Class VM
+  {
+      $name
+      $ram
+      $cpu
+      $disk
+     [Void] start() {Write-Host $this.name}
+   #  [String] getdetails() {$a=get-wmiobject win32_operatingsystem ;return $a.version}
+     [pcdetails] Getdetails() {$b = New-Object -TypeName pcdetails
+                          $b.nic = Get-Date
+                          $b.drive = Get-Process
+                          $b.bit = Get-Service ;return $b                              
+                              
+                             }
+                
+                }
+
+
+                $myvm.name = "localhost"
+                $myvm.start()
+                $myvm.getdetails()
+
+
+$c.bit
+
+        $myvm.ram
+
+Class pcdetails
+
+  {  
+     $nic
+     $drive
+     $bit
+     
+     }
+
+
+
+
+[string] Getdetails() {$b = New-Object -TypeName pcdetails
+                          $b.nic = Get-Date
+                          $b.drive = Get-WmiObject
+                          $b.bit = Get-Service                               
+                               
+                               }
+
+
+
+get-job -Id 19 | select  65 Start-Job -ScriptBlock {Get-Service}                                                             ...
+  86 get-job -Id 19 | fl*                                                                                                            
+  87 get-job -Id 19 | fl*                                                                                                            
+  88 get-job -Id 19 | fl *                                                                                                           
+  89 $job =get-job -Id 18                                                                                                            
+  90 $job.ChildJobs                                                                                                                  
+  91 $job.ChildJobs[0]                                                                                                               
+  92 $job.ChildJobs[0].JobStateInfo                                                                                                  
+  93 $job.ChildJobs[0].JobStateInfo.Reason
