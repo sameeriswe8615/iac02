@@ -845,3 +845,75 @@ get-job -Id 19 | select  65 Start-Job -ScriptBlock {Get-Service}                
   91 $job.ChildJobs[0]                                                                                                               
   92 $job.ChildJobs[0].JobStateInfo                                                                                                  
   93 $job.ChildJobs[0].JobStateInfo.Reason
+  
+  
+  #######################################################################################
+  
+  29/12/2018
+  
+  Function get-azurevm1
+
+  { [cmdletbinding()]
+
+     param(
+              $vmname,
+              $region  
+                
+                )
+    begin { }
+    process {Write-Host "Hi"}
+    end { }
+
+
+          }
+          
+   Then Run get-azurevm1 ( chek the output )
+   
+   
+   ##############
+   Example 2
+   
+   Function get-azurevm1
+
+  { [cmdletbinding()]
+
+     param(
+              $vmname,
+              $region  
+                
+                )
+    begin { }
+    process { 
+    
+         Write-Verbose "Trying to connect $comp"
+
+         Test-Connection
+
+         Write-Verbose "Fetching Input from $com"
+         
+         }
+    end { }
+
+
+          }
+          
+          
+          ##############
+          
+          
+          try
+   { 
+      Get-Service -DisplayName sameer -ErrorAction stop
+        }
+catch
+   {
+     Write-Host "The error is $_"
+        $_.categoryinfo
+        $_.exception
+        $_.errordetails
+
+    }
+    
+    ######## MOdule ############
+    
+    
