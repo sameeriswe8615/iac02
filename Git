@@ -1,0 +1,19 @@
+Git is version control system
+Mulitple people contributing on code
+code sharing withmultiple people
+VCS maintain version history 
+multiple version control system available in market
+Git is distrubation version control system. ex. one code save in your local system it mean we can work offline 
+
+#### Basic git commond #####
+Git add : use to upload file in staging area
+git commit : commit your code to locat version database 
+git push : push code on git hub 
+
+###############Practicle ##################
+git config --global user.name "sameeriswe8615"
+git config --global user.email sameeriswe@hotmail.com
+git add test.txt
+git status
+git commit -m "this is test file" test.txt
+git push -u origin master 
