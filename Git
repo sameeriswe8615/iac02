@@ -13,7 +13,30 @@ git push : push code on git hub
 ###############Practicle ##################
 git config --global user.name "sameeriswe8615"
 git config --global user.email sameeriswe@hotmail.com
+
 git add test.txt
 git status
 git commit -m "this is test file" test.txt
 git push -u origin master 
+git config --list ( who done last changes ) 
+git help config 
+git config --help ( we can change verb over here ) 
+git init ( use to check the repository where we are working ) 
+
+#### Git Structure ###
+ 1) Working Directory (Stage fixes) 
+ 2) Staging area (Commit)
+ 3) .git directory ( Repository) 
+ 
+ 
+ #################ADD file in staging area ####
+ 
+ git add -A ( this commond use to add all file in repository ) 
+ git status
+
+##### Remove file from staging area #####
+git reset "File Name"
+get reset "this file will remove from staging area"
+
+### Clonning a remote repo ####
+git clone "Url"
