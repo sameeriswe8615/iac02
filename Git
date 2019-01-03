@@ -40,3 +40,18 @@ get reset "this file will remove from staging area"
 
 ### Clonning a remote repo ####
 git clone "Url"
+
+### Changes in existing file ####
+
+git diff ( this commond shows you existing file changes ) 
+
+##### create Branch for desire feature ##########
+
+git branch ( use to list all branch ) 
+git brnach sam-repo ( to create new brnach ex. sam-repo )
+git checkout sam-repo ( this commond use to check in new branch ) 
+git checkout master ( to sing off from sam-repo and login to master branch use this commond )
+git push -u origin sam-repo (This is commond use to push update from one file to another branch)
+git pull origin master ( to retern the changes in master branch ) 
+git branch --mearged (This commond use to mearge changes from sam-repo branch to master branch )
+
