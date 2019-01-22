@@ -1,0 +1,9 @@
+#get all DSC cmdlet 
+get-commond -noun dsc*
+
+# get available resources 
+get-dscrescource 
+
+# what can we configure for all resources 
+get-dscresource file | select-expandpropertiy properties
+
